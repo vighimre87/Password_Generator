@@ -90,7 +90,18 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  let numberOfCharacters = Number(prompt("How many characters would you like in your password?"));
+  let numberOfLowerCase = confirm("Would you like lower case characters in your password?");
+  let numberOfUpperCase = confirm("Would you like upper case characters in your password?");
+  let numberOfNumeric = confirm("Would you like numeric characters in your password?");
+  let numberOfSpecial = confirm("Would you like special characters in your password?");
+  // checking the invalid user input
+  if (numberOfCharacters < 10 || numberOfCharacters >64 ||  (numberOfLowerCase === false && numberOfUpperCase === false && numberOfNumeric ===  false && numberOfSpecial === false)) {
+      getPasswordOptions();
+    }
+  let passWordOptions = [numberOfCharacters, numberOfLowerCase, numberOfUpperCase, numberOfNumeric, numberOfSpecial];
+  console.log(passWordOptions);
+  return passWordOptions;
 }
 
 // Function for getting a random element from an array
@@ -108,6 +119,7 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
+
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
 
@@ -116,3 +128,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+console.log(getPasswordOptions());
