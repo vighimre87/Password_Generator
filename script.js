@@ -91,7 +91,7 @@ const upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
   let numberOfChars = Number(prompt("How many characters would you like in your password? Please enter a number between 10 and 64:"));
-  if (numberOfChars < 10 || numberOfChars >64) {getPasswordOptions();}
+  if (numberOfChars < 10 || numberOfChars >64 || isNaN(numberOfChars)) {getPasswordOptions();}
   let lowerCaseChars = confirm("Would you like lower case characters in your password?");
   let upperCaseChars = confirm("Would you like upper case characters in your password?");
   let numericChars = confirm("Would you like numeric characters in your password?");
@@ -99,10 +99,10 @@ function getPasswordOptions() {
   // checking the invalid user input
   if (lowerCaseChars === false && upperCaseChars === false && numericChars ===  false && specialChars === false) {
       getPasswordOptions();
-    } else {
-      let passWordOptions = [numberOfChars, lowerCaseChars, upperCaseChars, numericChars, specialChars];
-      return passWordOptions;
     }
+    let passWordOptions = [numberOfChars, lowerCaseChars, upperCaseChars, numericChars, specialChars];
+    console.log(passWordOptions);
+    return passWordOptions;
 }
 
 // Function for getting a random element from an array
