@@ -90,15 +90,20 @@ const upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  // ask the user about password options and validate the first input for the password's length and the data type of the input
   let numberOfChars = Number(prompt("How many characters would you like in your password? Please enter a number between 10 and 64:"));
-  if (numberOfChars < 10 || numberOfChars >64 || isNaN(numberOfChars)) {getPasswordOptions();}
+  if (numberOfChars <= 10 || numberOfChars >= 64 || isNaN(numberOfChars)) {
+    alert("Invalid input. Please enter a number between 10 and 64 including these 2 numbers.");
+    getPasswordOptions();
+  }
   let lowerCaseChars = confirm("Would you like lower case characters in your password?");
   let upperCaseChars = confirm("Would you like upper case characters in your password?");
   let numericChars = confirm("Would you like numeric characters in your password?");
   let specialChars = confirm("Would you like special characters in your password?");
-  // checking the invalid user input
+  // checking if at least one character type is selected
   if (lowerCaseChars === false && upperCaseChars === false && numericChars ===  false && specialChars === false) {
-      getPasswordOptions();
+    alert("Invalid input. Please, choose at least one character group and enter the number of characters again!");
+    getPasswordOptions();
     }
     let passWordOptions = [numberOfChars, lowerCaseChars, upperCaseChars, numericChars, specialChars];
     return passWordOptions;
@@ -114,8 +119,12 @@ function getRandom(randomArray) {
 // Function to generate password with user input
 function generatePassword() {
   let password = "";
+  // call getPasswordOptions() to get the passwordOptions array and save it in the passwordArrays variable
   let passwordArrays = getPasswordOptions();
   let arrayOptions = [lowerCasedCharacters, upperCasedCharacters, numericCharacters, specialCharacters];
+  // create an empty array to filter the arrayOptions array and put just the true values inside
+  // so when we select a random array in order to pick a random element from there we already have just those arrays
+  // that the user wants to select from
   let filteredArray = [];
   for (let i = 1; i < passwordArrays.length; i++) {
     if (passwordArrays[i]===true) {
@@ -124,6 +133,7 @@ function generatePassword() {
     }
   }
   console.log(filteredArray);
+  // pick a random element from the random array and concatenate with the password string
   for (let i = 0; i < passwordArrays[0]; i++) {
     password+=getRandom(filteredArray[Math.floor(Math.random()*filteredArray.length)]);
   }
