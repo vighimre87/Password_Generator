@@ -92,7 +92,7 @@ const upperCasedCharacters = [
 function getPasswordOptions() {
   // ask the user about password options and validate the first input for the password's length and the data type of the input
   let numberOfChars = Number(prompt("How many characters would you like in your password? Please enter a number between 10 and 64:"));
-  if (numberOfChars <= 10 || numberOfChars >= 64 || isNaN(numberOfChars)) {
+  if (numberOfChars <= 10 || numberOfChars >= 64 || isNaN(numberOfChars) || !Number.isInteger(numberOfChars)) {
     alert("Invalid input. Please enter a number between 10 and 64 including these 2 numbers.");
     getPasswordOptions();
   }

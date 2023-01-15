@@ -16,7 +16,7 @@
 
 8. We need to create a function to get a random element from an array
 
-9. Inside the generatePassword() method we need to create an empty string for the password and call generatePassword to 
+9. Inside the generatePassword() method we need to create an empty string for the password and call the getRandom(randomArray) in order to select a random element from one of the array
 
 Test cases:
 lowercase, uppercase, numeric, special
