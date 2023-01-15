@@ -101,13 +101,13 @@ function getPasswordOptions() {
       getPasswordOptions();
     }
     let passWordOptions = [numberOfChars, lowerCaseChars, upperCaseChars, numericChars, specialChars];
-    console.log(passWordOptions);
     return passWordOptions;
 }
 
 // Function for getting a random element from an array
 function getRandom(randomArray) {
   let randomIndex = Math.floor(Math.random()*randomArray.length);
+  console.log(randomArray[randomIndex]);
   return randomArray[randomIndex];
 }
 
@@ -116,13 +116,16 @@ function generatePassword() {
   let password = "";
   let passwordArrays = getPasswordOptions();
   let arrayOptions = [lowerCasedCharacters, upperCasedCharacters, numericCharacters, specialCharacters];
+  let filteredArray = [];
   for (let i = 1; i < passwordArrays.length; i++) {
-    if (!passwordArrays[i]) {
-      delete arrayOptions[i-1];
+    if (passwordArrays[i]===true) {
+      filteredArray.push(arrayOptions[i-1]);
+      console.log(filteredArray);
     }
   }
+  console.log(filteredArray);
   for (let i = 0; i < passwordArrays[0]; i++) {
-    password+=getRandom(arrayOptions[Math.floor(Math.random()*arrayOptions.length)]);
+    password+=getRandom(filteredArray[Math.floor(Math.random()*filteredArray.length)]);
   }
   return password;
 }

@@ -17,3 +17,22 @@
 8. We need to create a function to get a random element from an array
 
 9. Inside the generatePassword() method we need to create an empty string for the password and call generatePassword to 
+
+Test cases:
+lowercase, uppercase, numeric, special
+lowercase
+uppercase
+numeric
+special
+lowercase, uppercase
+lowercase, numeric
+lowercase, special
+uppercase, numeric
+uppercase, special
+numeric, special
+lowercase, uppercase, numeric
+lowercase, uppercase,
+special
+lowercase, numeric, special
+uppercase, numeric, special
+none
