@@ -88,25 +88,41 @@ const upperCasedCharacters = [
   'Z'
 ];
 
+// Ask the user to press the "Generate a Password" button
+alert("Please press the Generate a Password button to start!");
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-  // ask the user about password options and validate the first input for the password's length and the data type of the input
-  let numberOfChars = Number(prompt("How many characters would you like in your password? Please enter a number between 10 and 64:"));
-  if (numberOfChars < 10 || numberOfChars > 64 || isNaN(numberOfChars) || !Number.isInteger(numberOfChars)) {
-    alert("Invalid input. Please enter a number between 10 and 64 including these 2 numbers.");
-    getPasswordOptions();
-  }
-  let lowerCaseChars = confirm("Would you like lower case characters in your password?");
-  let upperCaseChars = confirm("Would you like upper case characters in your password?");
-  let numericChars = confirm("Would you like numeric characters in your password?");
-  let specialChars = confirm("Would you like special characters in your password?");
-  // checking if at least one character type is selected
-  if (lowerCaseChars === false && upperCaseChars === false && numericChars ===  false && specialChars === false) {
-    alert("Invalid input. Please, choose at least one character group and enter the number of characters again!");
-    getPasswordOptions();
+  let numberOfChars = 0;
+  let lowerCaseChars = false;
+  let upperCaseChars = false;
+  let numericChars = false;
+  let specialChars = false;
+  // create an empty array to store user answers for the length of the password and the character types
+  let passwordOptions = [];
+    // ask the user about password options and validate the first input for the password's length and the data type of the input
+  while (numberOfChars < 10 || numberOfChars > 64 || isNaN(numberOfChars) || !Number.isInteger(numberOfChars)) {
+    numberOfChars = Number(prompt("How many characters would you like in your password? Please enter a number between 10 and 64:"));
+    if (numberOfChars < 10 || numberOfChars > 64 || isNaN(numberOfChars) || !Number.isInteger(numberOfChars)) {
+      alert("Invalid input. Please enter a number between 10 and 64 including these 2 numbers.");
+    } else {
+      passwordOptions.push(numberOfChars);
+      lowerCaseChars = confirm("Would you like lower case characters in your password?");
+      upperCaseChars = confirm("Would you like upper case characters in your password?");
+      numericChars = confirm("Would you like numeric characters in your password?");
+      specialChars = confirm("Would you like special characters in your password?");
+        // checking if at least one character type is selected
+      if (lowerCaseChars === false && upperCaseChars === false && numericChars ===  false && specialChars === false) {
+        alert("Invalid input. Please, choose at least one character group and enter the number of characters again!");
+      } else {
+        passwordOptions.push(lowerCaseChars);
+        passwordOptions.push(upperCaseChars);
+        passwordOptions.push(numericChars);
+        passwordOptions.push(specialChars);
+      }
     }
-    let passWordOptions = [numberOfChars, lowerCaseChars, upperCaseChars, numericChars, specialChars];
-    return passWordOptions;
+  }
+    return passwordOptions;
 }
 
 // Function for getting a random element from an array
