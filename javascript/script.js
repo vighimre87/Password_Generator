@@ -92,7 +92,7 @@ const upperCasedCharacters = [
 function getPasswordOptions() {
   // ask the user about password options and validate the first input for the password's length and the data type of the input
   let numberOfChars = Number(prompt("How many characters would you like in your password? Please enter a number between 10 and 64:"));
-  if (numberOfChars <= 10 || numberOfChars >= 64 || isNaN(numberOfChars) || !Number.isInteger(numberOfChars)) {
+  if (numberOfChars < 10 || numberOfChars > 64 || isNaN(numberOfChars) || !Number.isInteger(numberOfChars)) {
     alert("Invalid input. Please enter a number between 10 and 64 including these 2 numbers.");
     getPasswordOptions();
   }
@@ -112,7 +112,6 @@ function getPasswordOptions() {
 // Function for getting a random element from an array
 function getRandom(randomArray) {
   let randomIndex = Math.floor(Math.random()*randomArray.length);
-  console.log(randomArray[randomIndex]);
   return randomArray[randomIndex];
 }
 
@@ -129,10 +128,8 @@ function generatePassword() {
   for (let i = 1; i < passwordArrays.length; i++) {
     if (passwordArrays[i]===true) {
       filteredArray.push(arrayOptions[i-1]);
-      console.log(filteredArray);
     }
   }
-  console.log(filteredArray);
   // pick a random element from the random array and concatenate with the password string
   for (let i = 0; i < passwordArrays[0]; i++) {
     password+=getRandom(filteredArray[Math.floor(Math.random()*filteredArray.length)]);
