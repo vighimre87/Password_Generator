@@ -88,8 +88,6 @@ const upperCasedCharacters = [
   'Z'
 ];
 
-// Ask the user to press the "Generate a Password" button
-alert("Please press the Generate a Password button to start!");
 
 // Function to prompt user for password options
 function getPasswordOptions() {
