@@ -88,7 +88,8 @@ const upperCasedCharacters = [
   'Z'
 ];
 
-
+// alert the user how to start
+alert("Please press the 'Generate Password' button to start.");
 // Function to prompt user for password options
 function getPasswordOptions() {
   let numberOfChars = 0;
