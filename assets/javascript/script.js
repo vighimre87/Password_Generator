@@ -88,8 +88,6 @@ const upperCasedCharacters = [
   'Z'
 ];
 
-// alert the user how to start
-alert("Please press the 'Generate Password' button to start.");
 // Function to prompt user for password options
 function getPasswordOptions() {
   let numberOfChars = 0;
@@ -121,7 +119,7 @@ function getPasswordOptions() {
       }
     }
   }
-    return passwordOptions;
+  return passwordOptions;
 }
 
 // Function for getting a random element from an array
@@ -153,15 +151,34 @@ function generatePassword() {
 }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+let generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+  let password = generatePassword();
+  let passwordText = document.querySelector('#password');
 
   passwordText.value = password;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+
+// Get references to the #copy element
+let copyBtn = document.querySelector("#copy");
+
+// Copy password to the clipboard
+function copyPassword() {
+  // Get the password text field
+  let passwordCopy = document.querySelector("#password");
+  // select the text area
+  passwordCopy.select();
+  // Copy the text inside from the password text area
+  navigator.clipboard.writeText(passwordCopy.value);
+  // Alert the user about the copied text
+  alert("You copied the password so you can paste it now anywhere.");
+}
+
+// Add event listener to copy button
+copyBtn.addEventListener("click", copyPassword);
