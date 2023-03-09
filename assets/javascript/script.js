@@ -124,7 +124,7 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(randomArray) {
-  let randomIndex = Math.floor(Math.random()*randomArray.length);
+  const randomIndex = Math.floor(Math.random()*randomArray.length);
   return randomArray[randomIndex];
 }
 
@@ -132,12 +132,12 @@ function getRandom(randomArray) {
 function generatePassword() {
   let password = "";
   // call getPasswordOptions() to get the passwordOptions array and save it in the passwordArrays variable
-  let passwordArrays = getPasswordOptions();
-  let arrayOptions = [lowerCasedCharacters, upperCasedCharacters, numericCharacters, specialCharacters];
+  const passwordArrays = getPasswordOptions();
+  const arrayOptions = [lowerCasedCharacters, upperCasedCharacters, numericCharacters, specialCharacters];
   // create an empty array to filter the arrayOptions array and put just the true values inside
   // so when we select a random array in order to pick a random element from there we already have just those arrays
   // that the user wants to select from
-  let filteredArray = [];
+  const filteredArray = [];
   for (let i = 1; i < passwordArrays.length; i++) {
     if (passwordArrays[i]===true) {
       filteredArray.push(arrayOptions[i-1]);
@@ -151,12 +151,12 @@ function generatePassword() {
 }
 
 // Get references to the #generate element
-let generateBtn = document.querySelector('#generate');
+const generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  let password = generatePassword();
-  let passwordText = document.querySelector('#password');
+  const password = generatePassword();
+  const passwordText = document.querySelector('#password');
 
   passwordText.value = password;
 }
@@ -166,12 +166,12 @@ generateBtn.addEventListener('click', writePassword);
 
 
 // Get references to the #copy element
-let copyBtn = document.querySelector("#copy");
+const copyBtn = document.querySelector("#copy");
 
 // Copy password to the clipboard
 function copyPassword() {
   // Get the password text field
-  let passwordCopy = document.querySelector("#password");
+  const passwordCopy = document.querySelector("#password");
   // select the text area
   passwordCopy.select();
   // Copy the text inside from the password text area
