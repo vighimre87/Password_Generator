@@ -178,6 +178,8 @@ function copyPassword() {
   navigator.clipboard.writeText(passwordCopy.value);
   // Alert the user about the copied text
   alert("You copied the password so you can paste it now anywhere.");
+  // Empty the text area after copying password to clipboard
+  passwordCopy.value = "";
 }
 
 // Add event listener to copy button
